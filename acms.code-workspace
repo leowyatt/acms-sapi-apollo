@@ -1,0 +1,83 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "[dotenv]": {
+      "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[shellscript]": {
+      "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[dockerfile]": {
+      "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[ignore]": {
+      "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[properties]": {
+      "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "sqltools.connections": [
+      {
+        "name": "db",
+        "driver": "PostgreSQL",
+        "server": "127.0.0.1",
+        "port": 4021,
+        "database": "db",
+        "username": "db",
+        "password": "db",
+        "previewLimit": 50
+      }
+    ],
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "terminal.explorerKind": "external",
+    "[hosts]": {
+      "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[sql]": {
+      "editor.defaultFormatter": "mtxr.sqltools"
+    },
+    "sqltools.autoConnectTo": "db",
+    "sqltools.results.location": "1",
+    "sqltools.results.reuseTabs": "connection",
+    "sqltools.showStatusbar": false,
+    "sqltools.autoOpenSessionFiles": false,
+    "githubPullRequests.ignoredPullRequestBranches": ["develop", "main"]
+  },
+  "extensions": {
+    "recommendations": [
+      "apollographql.vscode-apollo",
+      "esbenp.prettier-vscode",
+      "foxundermoon.shell-format",
+      "msjsdiag.vscode-react-native",
+      "redhat.vscode-yaml",
+      "mtxr.sqltools-driver-pg",
+      "mikestead.dotenv",
+      "aaron-bond.better-comments",
+      "mtxr.sqltools",
+      "ms-azuretools.vscode-docker",
+      "william-voyek.vscode-nginx",
+      "graphql.vscode-graphql",
+      "GraphQL.vscode-graphql-syntax",
+      "dsznajder.es7-react-js-snippets",
+      "andydevs123.expo-component-preview",
+      "rduraj.expo-toolkit-push",
+      "donjayamanne.githistory",
+      "felipecaputo.git-project-manager",
+      "github.vscode-pull-request-github",
+      "github.remotehub",
+      "capaj.graphql-codegen-vscode",
+      "visualstudioexptteam.vscodeintellicode",
+      "visualstudioexptteam.intellicode-api-usage-examples",
+      "zainchen.json",
+      "christian-kohler.npm-intellisense",
+      "ms-vscode.remote-repositories",
+      "adpyke.vscode-sql-formatter"
+    ]
+  }
+}

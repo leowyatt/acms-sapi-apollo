@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "strict": true,
+    "allowJs": true,
+    "outDir": "./dist"
+  },
+  "exclude": [
+    "node_moduels/**/*"
+  ],
+  "include": [
+    "src/**/*"
+  ]
+}
