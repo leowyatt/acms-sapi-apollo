@@ -9,7 +9,10 @@ const { makeSchemaAndPlugin } = require("postgraphile-apollo-server");
 const postGraphileOptions = {
   // jwtSecret: process.env.JWT_SECRET || String(Math.random()),
   // subscriptions: true,
-  appendPlugins: [require("@graphile-contrib/pg-simplify-inflector")],
+  appendPlugins: [
+    require("@graphile-contrib/pg-simplify-inflector"),
+    require("postgraphile-plugin-connection-filter"),
+  ],
   // dynamicJson: true,
   // etc
 };

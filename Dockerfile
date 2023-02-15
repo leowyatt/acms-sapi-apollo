@@ -13,15 +13,6 @@ ENV TOKEN_SECRET="$(yarn uuid v4)"
 ENV SKIP_PREFLIGHT_CHECK="true"
 CMD yarn nodemon ./src/index.js
 
-FROM sapi as nginx
-CMD yarn nodemon ./src/nginx/index.js
-
-FROM sapi as push
-CMD yarn nodemon ./src/push/index.js
-
-FROM sapi as upload
-CMD yarn nodemon ./src/upload/index.js
-
 ###############################################################################
 
 FROM postgis/postgis:14-master as postgis
@@ -32,10 +23,3 @@ RUN apt-get update && apt-get install postgresql-14-wal2json
 
 FROM dpage/pgadmin4:latest as pgadmin
 FROM pgadmin as dba
-
-###############################################################################
-
-FROM zenko/cloudserver as cloudserver
-FROM cloudserver as cloud
-
-###############################################################################

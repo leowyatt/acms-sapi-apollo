@@ -37,29 +37,9 @@ services:
     depends_on:
       - db
 
-  cloud:
-    profiles: ["cloud"]
-    image: cloud
-    build:
-      target: cloud
-    restart: always
-    working_dir: /usr/src/app
-    environment:
-      - S3BACKEND=mem
-      - SCALITY_ACCESS_KEY_ID=accessKey1
-      - SCALITY_SECRET_ACCESS_KEY=verySecretKey1
-      - LOG_LEVEL=trace
-      - LISTEN_ADDR=0.0.0.0
-      - ENDPOINT=cloud
-    volumes:
-      - cloud_data:/usr/src/app/localData
-      - cloud_metadata:/usr/src/app/localMetadata
-    ports:
-      - 127.0.0.1:4023:8000
-
   # -----------------------------------------------------------------------------
   api:
-    profiles: ["dev1", "api"]
+    profiles: ["dev", "api"]
     image: api
     build:
       target: api
@@ -80,67 +60,6 @@ services:
     depends_on:
       - db
 
-  # -----------------------------------------------------------------------------
-  upload:
-    profiles: ["upload"]
-    image: upload
-    build:
-      target: upload
-    restart: always
-    working_dir: /app
-    volumes:
-      - ./package.json:/app/package.json
-      - ./yarn.lock:/app/yarn.lock
-      - ./jsconfig.json:/app/jsconfig.json
-      - ./src:/app/src
-      - upload_data:/app/public/__uploads
-      - upload_node:/app/node_modules
-    stdin_open: true
-    tty: true
-    ports:
-      - 0.0.0.0:4011:4011
-
-  # -----------------------------------------------------------------------------
-  push:
-    profiles: ["push"]
-    image: push
-    build:
-      target: push
-    restart: always
-    working_dir: /app
-    volumes:
-      - ./package.json:/app/package.json
-      - ./yarn.lock:/app/yarn.lock
-      - ./jsconfig.json:/app/jsconfig.json
-      - ./src:/app/src
-      - push_node:/app/node_modules
-    stdin_open: true
-    tty: true
-    ports:
-      - 0.0.0.0:4012:4012
-
-  # -----------------------------------------------------------------------------
-  nginx:
-    profiles: ["nginx"]
-    image: jonasal/nginx-certbot:latest
-    environment:
-      - CERTBOT_EMAIL=ecophone.space@mail.ru
-      - STAGING="1"
-      - DEBUG="1"
-      - DOMAIN=test.chophone.space
-    restart: unless-stopped
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - secrets_data:/etc/letsencrypt
-      - ./src/nginx/http.conf.template:/etc/nginx/templates/default.conf.template
-      - ./src/nginx/proxy.conf:/etc/nginx/proxy.conf
-      - ./src/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./dist/home:/var/www/home
-
-# -----------------------------------------------------------------------------
-
 # -----------------------------------------------------------------------------
 networks:
   sapi_default:
@@ -148,12 +67,5 @@ networks:
 # -----------------------------------------------------------------------------
 volumes:
   api_node:
-  push_node:
-  upload_node:
-  prod_node:
   db_data:
-  upload_data:
-  secrets_data:
   dba_data:
-  cloud_data:
-  cloud_metadata:
